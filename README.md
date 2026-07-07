@@ -6,11 +6,10 @@ It reads the current employee list and writes a CSV where:
 
 - nobody gets themselves
 - everyone is assigned exactly once
+- nobody gets the same Secret Child they had in the previous-year result file
 
-If a previous-year assignment file is provided, the program also avoids assigning
-the same child as last year. The challenge input provided here only includes the
-current employee list, so the final output is generated without previous-year
-restrictions.
+The employer-provided `sample_data/Secret-Santa-Game-Result-2023.xlsx` file is
+used as the previous-year assignment history.
 
 ## Setup
 
@@ -29,7 +28,7 @@ source venv/bin/activate
 ## Run
 
 ```bash
-python -m secret_santa.main --employees sample_data/employees.csv --output output/assignments.csv
+python -m secret_santa.main --employees sample_data/employees.csv --previous sample_data/Secret-Santa-Game-Result-2023.xlsx --output output/assignments.csv
 ```
 
 You can also pass the provided `.xlsx` file with the same column names:
@@ -38,7 +37,7 @@ You can also pass the provided `.xlsx` file with the same column names:
 python -m secret_santa.main --employees "Employee-List.xlsx" --output output/assignments.csv
 ```
 
-Only if a real previous-year assignment file is supplied:
+You can replace the previous-year file with another CSV or XLSX file:
 
 ```bash
 python -m secret_santa.main ^
